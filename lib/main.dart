@@ -1,8 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+import 'package:todolist/todo.dart';
 
 import 'list_screen.dart';
 
-void main() {
+late Box<Todo> todos;
+
+void main() async {
+  await Hive.initFlutter();
+  Hive.registerAdapter(TodoAdapter());
+  todos = await Hive.openBox<Todo>('todolist.db');
   runApp(const MyApp());
 }
 
