@@ -29,13 +29,14 @@ class _ListScreenState extends State<ListScreen> {
             .toList(),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.push(
+        onPressed: () async {
+          await Navigator.push(
             context,
             MaterialPageRoute(
               builder: (context) => const CreateScreen(),
             ),
           );
+          setState(() {});
         },
         child: const Icon(Icons.add),
       ),
